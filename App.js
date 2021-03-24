@@ -16,7 +16,7 @@ export default function App() {
   const gravity = 3;
   const obstacleHeight = 300; 
   const obstacleWidth = 60;
-  const gap = 50;
+  const gap = 100;
   
   let gameTimerId ; // we decalring it as global varibale so we can acess this from every where.
   let obstacleLeftTimerId ;
@@ -44,13 +44,16 @@ export default function App() {
 // start obstacles for the game
 
 useEffect(()=>{
-if(obstaclesLeft > 0){
+if(obstaclesLeft > -obstacleWidth){  // obstacle disappring beacuse we are deducting the obsatcle width 
   obstacleLeftTimerId = setInterval(()=>{
     setObstaclesLeft (obstaclesLeft => obstaclesLeft - 5)
   }, 30)
-}
+
 return ()=>{
   clearInterval(obstacleLeftTimerId)
+}
+} else {
+  setObstaclesLeft (screenWidth)
 }
 }, [obstaclesLeft]);
 
