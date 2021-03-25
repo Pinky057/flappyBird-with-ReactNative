@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import Bird from './components/Bird';
 import Obstacles from './components/Obstacles';
@@ -59,6 +59,7 @@ return ()=>{
 
 
   return (
+    <ImageBackground style={{flex: 1}} source={require('./assets/bg1.jpg')}>
     <View style={styles.container}>
       <Bird
       birdBottom={birdBottom}
@@ -71,13 +72,14 @@ return ()=>{
     obstaclesLeft = {obstaclesLeft}
     />
     </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#E09453',
     alignItems: 'center',
     justifyContent: 'center',
   },
